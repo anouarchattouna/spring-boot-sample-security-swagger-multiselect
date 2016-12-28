@@ -30,20 +30,20 @@ org:
                 super-user:
                     # BCryptPasswordEncoder encripted password: 123456
                     password: $2a$10$J8w8baz4VKmc5kO.MuWtXuUcR0iNdrIT3UfjZq7jou8g4Kq03WxrK
-                    role: ROLE_ADMIN,ROLE_INSTAGRAM,ROLE_UBER,ROLE_PETSTORE
+                    roles: ROLE_ADMIN,ROLE_INSTAGRAM,ROLE_UBER,ROLE_PETSTORE
                 user1:
                     # BCryptPasswordEncoder encripted password: azertyuiop
                     password: $2a$10$IONw4cy/7AXIbbf/WGM0I.zrpmDRfHA9eBHVy3l7Oc8O/UP2jcLUG
-                    role: ROLE_INSTAGRAM
+                    roles: ROLE_INSTAGRAM
                 user2:
                     # BCryptPasswordEncoder encripted password: 01010101
                     password: $2a$10$KSXr.ooY3qXA5/iQb2zH..9mfW5bpbJLII72Q7UfD.C7.kwCCKx3O
-                    role: ROLE_UBER
+                    roles: ROLE_UBER
                 user3:
                     # BCryptPasswordEncoder encripted password: $password
                     password: $2a$10$iDAUa8Ffo2KJqD0///YxHuxcJIOHK7jOz.L4EXwqDCkxzq.pwVibe
-                    role: ROLE_PETSTORE
+                    roles: ROLE_PETSTORE
                 user4:
                     # BCryptPasswordEncoder encripted password: $my$password$
                     password: $2a$10$HDtpQ5sWOEpn6FQ4bigJmuvFg9UlsDTqeed8HnJzzp.4nACaoj.Jq
-                    role: ROLE_INSTAGRAM,ROLE_PETSTORE
+                    roles: ROLE_INSTAGRAM,ROLE_PETSTORE

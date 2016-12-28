@@ -44,7 +44,7 @@ public class UserRepositoryAsPropertiesFile implements UserRepository {
         if (prop.getKey().endsWith(".password") && !StringUtils.isEmpty(prop.getValue().toString())) {
           user.setPassword(prop.getValue().toString());
         }
-        if (prop.getKey().endsWith(".role") && !StringUtils.isEmpty(prop.getValue().toString())) {
+        if (prop.getKey().endsWith(".roles") && !StringUtils.isEmpty(prop.getValue().toString())) {
           String[] roles = prop.getValue().toString().split(",");
           Set<String> userRoles = new HashSet<String>();
           for (String r : roles) {
