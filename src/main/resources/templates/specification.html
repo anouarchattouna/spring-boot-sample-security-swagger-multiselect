@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Swagger UI</title>
+<script src="/lib/marked.js" th:src="@{/lib/marked.js}"></script>
+<script src="/lib/swagger-oauth.js" th:src="@{/lib/swagger-oauth.js}"></script>
+<script src="/lib/object-assign-pollyfill.js" th:src="@{/lib/object-assign-pollyfill.js}"></script>
+<script src="/lib/jquery-1.8.0.min.js" th:src="@{/lib/jquery-1.8.0.min.js}"></script>
+<script src="/lib/jquery.slideto.min.js" th:src="@{/lib/jquery.slideto.min.js}"></script>
+<script src="/lib/jquery.wiggle.min.js" th:src="@{/lib/jquery.wiggle.min.js}"></script>
+<script src="/lib/jquery.ba-bbq.min.js" th:src="@{/lib/jquery.ba-bbq.min.js}"></script>
+<script src="/lib/handlebars-4.0.5.js" th:src="@{/lib/handlebars-4.0.5.js}"></script>
+<script src="/lib/lodash.min.js" th:src="@{/lib/lodash.min.js}"></script>
+<script src="/lib/backbone-min.js" th:src="@{/lib/backbone-min.js}"></script>
+<script src="/swagger-ui.js" th:src="@{/swagger-ui.js}"></script>
+<script src="/lib/highlight.9.1.0.pack.js" th:src="@{/lib/highlight.9.1.0.pack.js}"></script>
+<script src="/lib/highlight.9.1.0.pack_extended.js" th:src="@{/lib/highlight.9.1.0.pack_extended.js}"></script>
+<script src="/lib/jsoneditor.min.js" th:src="@{/lib/jsoneditor.min.js}"></script>
+
+<script th:inline="javascript">
+	/*<![CDATA[*/
+		$(function() {
+			var apis = [[${apis}]];
+			var url = apis[0].apiValue;
+			var sel = $('#input_baseUrl');
+			var opt;
+			$.each(apis, function(key, value) {
+				opt = $('<option>').prop('value', value.apiValue).html(value.apiKey);
+				sel.append(opt);
+			});
+			sel.change(function() {
+				swaggerUi.headerView.showCustom();
+			});
+			hljs.configure({
+				highlightSizeThreshold : 5000
+			});
+			// Pre load translate...
+			if (window.SwaggerTranslator) {
+				window.SwaggerTranslator.translate();
+			}
+			window.swaggerUi = new SwaggerUi({
+				url : url,
+				dom_id : "swagger-ui-container",
+				supportedSubmitMethods : [],
+				onComplete : function(swaggerApi, swaggerUi) {
+					if (window.SwaggerTranslator) {
+						window.SwaggerTranslator.translate();
+					}
+				},
+				onFailure : function(data) {
+					log("Unable to Load SwaggerUI");
+				},
+				docExpansion : "none",
+				jsonEditor : false,
+				defaultModelRendering : "schema",
+				showRequestHeaders : false
+			});
+			window.swaggerUi.load();
+			function log() {
+				if ("console" in window) {
+					console.log.apply(console, arguments);
+				}
+			}
+		});
+	/*]]>*/
+</script>
+
+</head>
+
+<body class="swagger-section">
+	<div id="page-wrapper" layout:fragment="content">
+		<div id="header">
+			<div class="swagger-ui-wrap">
+				<a id="logo" th:href="@{http://swagger.io}" href="http://swagger.io">
+					<img class="logo__img" alt="swagger" height="30" width="30" src="/images/logo_small.png" th:src="@{/images/logo_small.png}" />
+					<span class="logo__title">swagger</span>
+				</a>
+				<form id='api_selector' th:action="@{/signout}" action="#" method="POST">
+					<div class='input'>
+						<select placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl"></select>
+					</div>
+					<a id="logout_btn" class="button-link" href="#" onclick="api_selector.submit();">Sign out</a>
+				</form>
+			</div>
+		</div>
+		<div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
+		<div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+	</div>
+</body>
+</html>

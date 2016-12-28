@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Error</title>
+</head>
+<body class="swagger-section">
+<div id="page-wrapper" layout:fragment="content">
+	<div id="header">
+		<div class="swagger-ui-wrap">
+			<a id="logo" th:href="@{http://swagger.io}" href="http://swagger.io">
+				<img class="logo__img" alt="swagger" height="30" width="30" src="/images/logo_small.png" th:src="@{/images/logo_small.png}" />
+				<span class="logo__title">swagger</span>
+			</a>
+			<form id='api_selector' th:action="@{/signout}" action="#" method="POST">
+				<a id="logout_btn" class="button-link" href="#" onclick="api_selector.submit();">Sign out</a>
+			</form>
+		</div>
+	</div>
+	<div id="message-bar" class="swagger-ui-wrap message-success">
+		<div class="container">
+			<div id="created" th:text="${#dates.format(timestamp)}">December 23, 2016 2:17:16 PM CET</div>
+			<div>
+				There was an unexpected error (type=<span th:text="${error}">Bad</span>, status=<span th:text="${status}">500</span>).
+			</div>
+			<div>
+				Please contact the operator with the above information.
+			</div>
+		</div>
+	
+	</div>
+</div>
+</body>
+</html>

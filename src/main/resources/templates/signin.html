@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layouts/layout">
+<head>
+<meta charset="UTF-8" />
+<title>Sign In</title>
+</head>
+<body class="swagger-section">
+<div id="page-wrapper" layout:fragment="content">
+	<div id="header">
+		<div class="swagger-ui-wrap">
+			<a id="logo" th:href="@{http://swagger.io}" href="http://swagger.io">
+				<img class="logo__img" alt="swagger" height="30" width="30" src="/images/logo_small.png" th:src="@{/images/logo_small.png}" />
+				<span class="logo__title">swagger</span>
+			</a>
+			<form id='api_selector' th:action="@{/signin}" action="/signin" method="POST" >
+				<div class='input'>
+					<input type="text" placeholder="Username" id="username" name="username" th:required="required" th:autofocus="autofocus" />
+				</div>
+				<div class='input'>
+					<input type="password" placeholder="Password" id="password" name="password" th:required="required" />
+				</div>
+				<a id="login_btn" class="button-link" href="#" onclick="api_selector.submit();" >Sign in</a>
+			</form>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+
+

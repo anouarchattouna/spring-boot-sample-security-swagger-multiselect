@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<title layout:title-pattern="$DECORATOR_TITLE - $CONTENT_TITLE">Open APIs Specifications</title>
+<link rel="shortcut icon" th:href="@{/images/favicon-32x32.png}" />
+<link rel="shortcut icon" th:href="@{/images/favicon-16x16.png}" />
+<link rel="stylesheet" href="/css/typography.css" media="screen" th:href="@{/css/typography.css}" />
+<link rel="stylesheet" href="/css/reset.css" media="screen" th:href="@{/css/reset.css}" />
+<link rel="stylesheet" href="/css/screen.css" media="screen" th:href="@{/css/screen.css}" />
+<link rel="stylesheet" href="/css/reset.css" media="print" th:href="@{/css/reset.css}" />
+<link rel="stylesheet" href="/css/print.css" media="print" th:href="@{/css/print.css}" />
+<style>
+.button-link {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 8px;
+  font-size: 0.9em;
+  color: white!important;
+  background-color: #547f00;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+  border-radius: 4px;
+  cursor: auto;
+  display: inline-block;
+  clear: none;
+  margin: 0 10px 0 0;  
+}
+.button-link:hover {
+  background-color: #547f00;
+}
+</style>
+</head>
+<body>
+<!-- 	<div th:replace="fragments/header :: header"></div>H -->
+	<div class="container">
+		<div layout:fragment="content"></div>
+	</div>
+<!-- 	<div th:replace="fragments/footer :: footer"></div>F -->
+</body>
+</html>
