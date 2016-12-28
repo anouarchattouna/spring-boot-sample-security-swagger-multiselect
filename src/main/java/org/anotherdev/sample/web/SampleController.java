@@ -42,6 +42,9 @@ public class SampleController {
       LOGGER.debug("No available API for user {}", authentication.getName());
     }
     Set<ApiInfo> apis = apiDocumentationHelper.getAllowedApisPerCredentials(authentication.getAuthorities());
+    if (apis.isEmpty()) {
+      throw new ForbiddenException();
+    }
     model.addAttribute("apis", apis);
     return "specification";
   }
