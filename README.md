@@ -1,5 +1,7 @@
 # spring-boot-sample-security-swagger-multiselect
 
+[![Build Status](https://secure.travis-ci.org/anouarchattouna/spring-boot-sample-security-swagger-multiselect.png)](http://travis-ci.org/anouarchattouna/spring-boot-sample-security-swagger-multiselect)
+
 This is a sample application based on:
 - [Spring Boot](https://github.com/spring-projects/spring-boot.git).
 - Spring Security.
